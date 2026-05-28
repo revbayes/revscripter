@@ -34,7 +34,7 @@ Currently, the options available in RevScripter are limited and the tool is stil
 
 ## Developers
 
-The development of RevScripter is led by [Lorenzo Chavarria](https://github.com/LorenzoCh11), with contributions from Walker Pett, Tracy Heath, and Sebastian Höhna.
+The development of RevScripter is led by [Lorenzo Chavarria](https://github.com/LorenzoCh11), with contributions from June Walker, Tracy Heath, and Sebastian Höhna.
 
 ## Design
 
