@@ -1,21 +1,22 @@
 <script>
+    import '../app.css'
 	import revbayessymbol from '$lib/assets/revbayessymbol.png';
 
 	let { children } = $props();
 </script>
 
-<svelte:head>
-	<link rel="icon" href={revbayessymbol} />
-</svelte:head>
+<h1 style="text-align: center">
+	<img src={revbayessymbol} width="50px" height="50px" alt="RevBayes" />RevScripter
+</h1>
 
 <nav>
-	<button><a href="/">Home</a></button>
-	<a href="/data">Data</a>
-	<a href="/taxa">Taxa</a>
-	<a href="/substitution_model">Substitution model</a>
-	<a href="/clock_model">Clock model</a>
-	<a href="/priors">Priors</a>
-	<a href="/mcmc">MCMC</a>
+	<a href="/" class="btn-style">Home</a>
+	<a href="/data" class="btn-style">Data</a>
+	<a href="/taxa" class="btn-style">Taxa</a>
+	<a href="/substitution_model" class="btn-style">Substitution model</a>
+	<a href="/clock_model" class="btn-style">Clock model</a>
+	<a href="/priors" class="btn-style">Priors</a>
+	<a href="/mcmc" class="btn-style">MCMC</a>
 </nav>
 
 {@render children()}
