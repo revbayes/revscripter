@@ -10,7 +10,7 @@ node_modules
 .vercel
 .netlify
 .wrangler
-/.svelte-kit
+sk/.svelte-kit
 /build
 
 # OS
@@ -23,8 +23,8 @@ Thumbs.db
 !.env.test
 
 # Uploaded files
-/uploads/*
-!/uploads/.gitkeep
+*/uploads/*
+*!/uploads/.gitkeep
 
 # Vite
 vite.config.js.timestamp-*
