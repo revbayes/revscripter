@@ -1,0 +1,11 @@
+{
+	"/": [],
+	"/clock_model": [],
+	"/data": [
+		"src/routes/data/+page.server.js"
+	],
+	"/mcmc": [],
+	"/priors": [],
+	"/substitution_model": [],
+	"/taxa": []
+}
