@@ -11,7 +11,7 @@
 </h3>
 
 <p>RevScripter is set up to guide you through the options that must be specified in the script. Start with the <i>Data</i> tab or click the <i>Get Started</i> button below. Complete your model specification and MCMC options. When you have specified a complete analysis, go to the <i>Scripts</i> tab and generate the Rev script. You will then be able to download the script as a text file or copy it to a file that you have saved locally. With a completed analysis script for RevBayes, you can run the file on your own computer (or HPC resources).</p>
-<p>To run the generated script in RevBayes, be sure that the file names and paths in the generated script are correct. Then open RevBayes and type the command: <tt>source myscript.Rev</tt>, where <tt>myscript.Rev</tt> is the name of the file you downloaded from RevScripter.</p>
+<p>To run the generated script in RevBayes, be sure that the file names and paths in the generated script are correct. Then open RevBayes and type the command: <tt>source("myscript.Rev")</tt>, where <tt>myscript.Rev</tt> is the name of the file you downloaded from RevScripter.</p>
 
 <h3>
     Source

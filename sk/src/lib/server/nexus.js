@@ -6,6 +6,7 @@ export class NexusParseError extends Error {}
  * It does not attempt to handle the full Nexus grammar (interleaved
  * matrices, multiple char sets, etc).
  * @param {string} text
+ * @returns {{ dataType: string, ntax: number | null, nchar: number | null, taxa: string[]}}
  */
 export function parseNexus(text) {
     const cleaned = text.replace(/\[[^\]]*\]/g, "");
@@ -14,6 +15,7 @@ export function parseNexus(text) {
         throw new NexusParseError("File does not start with #NEXUS");
     }
 
+    /** @type {Record<string, string>} */
     const blocks = {};
     const blockRegex = /BEGIN\s+(\w+)\s*;([\s\S]*?)END\s*;/gi;
     let match;
@@ -38,6 +40,7 @@ export function parseNexus(text) {
         if (dataTypeMatch) dataType = dataTypeMatch[1].toUpperCase();
     }
 
+    /** @type {string[]} */
     let taxa = [];
     if (taxaBlock) {
         const taxLabelsMatch = taxaBlock.match(/TAXLABELS([\s\S]*?);/i);
@@ -79,6 +82,10 @@ export function parseNexus(text) {
     return { dataType, ntax, nchar, taxa };
 }
 
+/**
+ * 
+ * @param {string} str 
+ */
 function extractLabels(str) {
     const labels = [];
     const re = /'([^']+)'|(\S+)/g;
@@ -89,6 +96,10 @@ function extractLabels(str) {
     return labels;
 }
 
+/**
+ * 
+ * @param {string} line 
+ */
 function extractFirstLabel(line) {
     if (!line) return null;
     const quoted = line.match(/^'([^']+)'/);
@@ -97,6 +108,10 @@ function extractFirstLabel(line) {
     return plain ? plain[1] : null;
 }
 
+/**
+ * 
+ * @param {string} line 
+ */
 function stripLabel(line) {
     const quoted = line.match(/^'[^']+'\s*(.*)$/);
     if (quoted) return quoted[1];

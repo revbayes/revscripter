@@ -2,8 +2,18 @@
     import { enhance } from '$app/forms';
     import { analysisState } from '$lib/state/analysis.svelte.js';
 
-    /** @type {import('./$types').ActionData} */
+    /** @type {import('./$types').PageProps} */
     let { form } = $props();
+
+    /** @type {import('./$types').SubmitFunction} */
+    function handleUpload() {
+        return async ({ result, update }) => {
+            if (result.type === 'success' && result.data?.success) {
+                analysisState.setData(result.data);
+            }
+            await update();
+        }
+    }
 </script>
 
 <h2>Data</h2>
@@ -12,14 +22,7 @@
 <form 
     method="post" 
     enctype="multipart/form-data"
-    use:enhance={() => {
-        return async ({ result, update }) => {
-            if (result.type === 'success' && result.data?.success) {
-                analysisState.setData(result.data);
-            }
-            await update();
-        };
-    }}
+    use:enhance={handleUpload}
 >
     <input type="file" name="data" />
     <button>Upload</button>

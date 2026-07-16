@@ -1,4 +1,3 @@
-import { writeFile } from "node:fs/promises";
 import { extname } from "node:path";
 import { fail } from "@sveltejs/kit";
 import { parseNexus, NexusParseError } from "$lib/server/nexus.js";
@@ -29,9 +28,6 @@ export const actions = {
             const message = err instanceof NexusParseError ? err.message: "Could not parse the file.";
             return fail(400, { error: `"${uploadedFile.name}": ${message}` });
         }
-
-        const filename = `uploads/${crypto.randomUUID()}${extname(uploadedFile.name)}`;
-        await writeFile(filename, text);
 
         return { 
             success: true,
