@@ -14,8 +14,8 @@
 	<a href="/data" class="btn-style">Data</a>
 	<a href="/taxa" class="btn-style">Taxa</a>
 	<a href="/substitution_model" class="btn-style">Substitution model</a>
-	<a href="/clock_model" class="btn-style">Clock model</a>
-	<a href="/priors" class="btn-style">Priors</a>
+	<a href="/tree_model" class="btn-style">Tree Model</a>
+	<a href="/moves" class="btn-style">Moves</a>
 	<a href="/mcmc" class="btn-style">MCMC</a>
 </nav>
 
