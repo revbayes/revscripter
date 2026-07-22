@@ -1,40 +1,39 @@
+import { sortedArraysEqual } from "$lib/arrays.js";
+
+/**
+ * @typedef {object} DataFile
+ * @property {string} fileName
+ * @property {string} dataType
+ * @property {number | null} ntax
+ * @property {number | null} nchar
+ * @property {string[]} taxa
+ */
+
 function createAnalysisState() {
-    /** @type {string | null} */
-    let fileName = $state(null);
-    /** @type {string | null} */
-    let dataType = $state(null);
-    /** @type {number | null} */
-    let ntax = $state(null);
-    /** @type {number | null} */
-    let nchar = $state(null);
-    /** @type {string[]} */
-    let taxa = $state([]);
+    /** @type {DataFile[]} */
+    let dataFiles = $state([]);
 
     return {
-        get fileName() {
-            return fileName;
-        },
-        get dataType() {
-            return dataType;
-        },
-        get ntax() {
-            return ntax;
-        },
-        get nchar() {
-            return nchar;
+        get dataFiles() {
+            return dataFiles;
         },
         get taxa() {
-            return taxa;
+            return dataFiles[0]?.taxa ?? [];
         },
+
         /**
-         * @param {{ fileName: string, dataType: string, ntax: number | null, nchar: number | null, taxa: string[] }} data
+         * @param {DataFile} file
+         * @returns {{ ok: true } | { ok: false, error: string }}
          */
-        setData({ fileName: fn, dataType: dt, ntax: nt, nchar: nc, taxa: tx }) {
-            fileName = fn;
-            dataType = dt;
-            ntax = nt;
-            nchar = nc;
-            taxa = tx;
+        addDataFile(file) {
+            if (dataFiles.length > 0 && !sortedArraysEqual(dataFiles[0].taxa, file.taxa)) {
+                return {
+                    ok: false,
+                    error: `Taxa in "${file.fileName}" do not match the taxa from previously uploaded files.`
+                };
+            }
+            dataFiles.push(file);
+            return { ok: true };
         }
     };
 }

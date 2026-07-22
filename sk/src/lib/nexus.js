@@ -79,6 +79,8 @@ export function parseNexus(text) {
     if (!dataType) throw new NexusParseError("Could not find DATATYPE in a FORMAT command");
     if (taxa.length === 0) throw new NexusParseError("Could not find taxon labels");
 
+    taxa.sort();
+
     return { dataType, ntax, nchar, taxa };
 }
 
