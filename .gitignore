@@ -11,7 +11,7 @@ node_modules
 .netlify
 .wrangler
 sk/.svelte-kit
-/build
+sk/build
 
 # OS
 Thumbs.db
