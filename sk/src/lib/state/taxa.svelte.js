@@ -33,6 +33,9 @@ function createTaxaState() {
         get groups() {
             return groups;
         },
+        get taxa() {
+            return Object.keys(ages);
+        },
 
         /**
          * @param {{ fileName: string, mode: 'age' | 'range', ages: Record<string, TaxonAge> }} data
