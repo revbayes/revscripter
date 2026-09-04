@@ -8,8 +8,8 @@
  * @property { string[] } taxa
  * @property { boolean } monophyletic
  * @property { boolean } monitorAge
+ * @property { boolean } monitorPosterior
  */
-
 function createTaxaState() {
     /** @type { string | null } */
     let ageFileName = $state(null);
@@ -51,7 +51,7 @@ function createTaxaState() {
          * @param {string[]} taxa
          */
         createGroup(name, taxa) {
-            groups.push({ name, taxa, monophyletic: false, monitorAge: false });
+            groups.push({ name, taxa, monophyletic: false, monitorAge: false, monitorPosterior: false });
         }
     };
 }
